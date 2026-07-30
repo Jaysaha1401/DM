@@ -1,0 +1,32 @@
+h1 {
+    font-size: 50px;
+    color: blue;
+}
+p {
+    font-size: 35px;
+    color: red;
+}
+button {
+    font-size: 25px;
+    margin-top: 20px;
+    color:green;
+    background-color: yellow;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+body {
+    text-align: center;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+}
+.search-box {
+    width: 400px;
+    height: 40px;
+    border-radius: 8px;
+    padding-left: 15px;
+    font-size: 16px;
+}
