@@ -43,3 +43,43 @@ body {
 .nav-links a:hover{
     color: red;
 }
+.hero-subtitle{
+    color: gray;
+    font-size: 18px;
+}
+.hero h1{
+    margin-bottom: 20px;
+}
+
+.hero p{
+    margin-bottom: 15px;
+}
+
+.hero-subtitle{
+    color: gray;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.hero{
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1{
+    margin-bottom: 20px;
+    font-size: 48px;
+}
+
+.hero p{
+    margin-bottom: 15px;
+}
+
+.hero-subtitle{
+    color: gray;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero button{
+    padding: 12px 24px;
+}
