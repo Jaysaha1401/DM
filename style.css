@@ -66,8 +66,9 @@ body {
 }
 
 .hero h1{
-    margin-bottom: 20px;
     font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .hero p{
@@ -82,4 +83,45 @@ body {
 
 .hero button{
     padding: 12px 24px;
+}
+.hero button{
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.nav-links a:hover{
+    color: red;
+}
+.hero button:hover{
+    background-color: #0056b3;
+}
+.hero button{
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 4px 10px gray;
+}
+.hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 80px 20px;
+
+    background-image: url("image/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 500px;
 }
