@@ -1,12 +1,57 @@
 [
-  {"icon":"🎁","name":"All Gift Cards","url":"gift-cards.html"},
-  {"icon":"🎮","name":"Gaming","url":"deals.html?category=Gaming"},
-  {"icon":"▶","name":"OTT & Entertainment","url":"gift-cards.html?category=Entertainment"},
-  {"icon":"🍴","name":"Food & Dining","url":"deals.html?category=Food"},
-  {"icon":"✈️","name":"Travel","url":"deals.html?category=Travel"},
-  {"icon":"🛍","name":"Fashion","url":"deals.html?category=Fashion"},
-  {"icon":"🎧","name":"Electronics","url":"deals.html?category=Electronics"},
-  {"icon":"🌸","name":"Beauty & Health","url":"deals.html?category=Beauty"},
-  {"icon":"🎓","name":"Education","url":"deals.html?category=Education"},
-  {"icon":"▦","name":"View All","url":"deals.html"}
+  {
+    "icon": "🎁",
+    "name": "All Gift Cards",
+    "url": "gift-cards.html"
+  },
+  {
+    "icon": "🎮",
+    "name": "Gaming",
+    "url": "deals.html?category=Gaming"
+  },
+  {
+    "icon": "▶",
+    "name": "OTT & Entertainment",
+    "url": "gift-cards.html?category=Entertainment"
+  },
+  {
+    "icon": "🍴",
+    "name": "Food & Dining",
+    "url": "deals.html?category=Food"
+  },
+  {
+    "icon": "✈️",
+    "name": "Travel",
+    "url": "deals.html?category=Travel"
+  },
+  {
+    "icon": "🛍",
+    "name": "Fashion",
+    "url": "deals.html?category=Fashion"
+  },
+  {
+    "icon": "🎧",
+    "name": "Electronics",
+    "url": "deals.html?category=Electronics"
+  },
+  {
+    "icon": "🌸",
+    "name": "Beauty & Health",
+    "url": "deals.html?category=Beauty"
+  },
+  {
+    "icon": "🎓",
+    "name": "Education",
+    "url": "deals.html?category=Education"
+  },
+  {
+    "icon": "🏪",
+    "name": "Local Businesses",
+    "url": "local-businesses.html"
+  },
+  {
+    "icon": "▦",
+    "name": "View All",
+    "url": "deals.html"
+  }
 ]

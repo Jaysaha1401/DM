@@ -1,5 +1,134 @@
 [
-  {"id":"local-cafe","name":"The Local Café","city":"Guwahati","type":"Food & Dining","icon":"☕","status":"coming-soon"},
-  {"id":"urban-style","name":"Urban Style Studio","city":"Guwahati","type":"Fashion & Beauty","icon":"✂️","status":"coming-soon"},
-  {"id":"green-basket","name":"Green Basket","city":"Guwahati","type":"Grocery & Local","icon":"🛒","status":"coming-soon"}
+  {
+    "id": "guwahati-local-cafe",
+    "name": "The Local Café",
+    "city": "Guwahati",
+    "state": "Assam",
+    "locality": "GS Road",
+    "type": "Food & Dining",
+    "icon": "☕",
+    "status": "featured",
+    "offer": "15% OFF on selected orders",
+    "banner": "Guwahati Food Week",
+    "products": [
+      {
+        "name": "₹500 Café Voucher",
+        "price": 425,
+        "oldPrice": 500,
+        "offer": "15% OFF"
+      },
+      {
+        "name": "Coffee & Snack Combo",
+        "price": 299,
+        "oldPrice": 349,
+        "offer": "14% OFF"
+      }
+    ]
+  },
+  {
+    "id": "guwahati-urban-style",
+    "name": "Urban Style Studio",
+    "city": "Guwahati",
+    "state": "Assam",
+    "locality": "Beltola",
+    "type": "Fashion & Beauty",
+    "icon": "✂️",
+    "status": "featured",
+    "offer": "Flat ₹300 OFF on services",
+    "banner": "Beltola Style Offers",
+    "products": [
+      {
+        "name": "Hair & Styling Voucher",
+        "price": 799,
+        "oldPrice": 1099,
+        "offer": "₹300 OFF"
+      }
+    ]
+  },
+  {
+    "id": "delhi-city-bites",
+    "name": "City Bites Kitchen",
+    "city": "Delhi",
+    "state": "Delhi",
+    "locality": "Saket",
+    "type": "Food & Dining",
+    "icon": "🍔",
+    "status": "featured",
+    "offer": "20% OFF on selected meals",
+    "banner": "Delhi Food Deals",
+    "products": [
+      {
+        "name": "₹1,000 Dining Voucher",
+        "price": 800,
+        "oldPrice": 1000,
+        "offer": "20% OFF"
+      },
+      {
+        "name": "Dinner for Two",
+        "price": 999,
+        "oldPrice": 1299,
+        "offer": "23% OFF"
+      }
+    ]
+  },
+  {
+    "id": "delhi-glow-studio",
+    "name": "Glow Studio",
+    "city": "Delhi",
+    "state": "Delhi",
+    "locality": "Dwarka",
+    "type": "Beauty & Wellness",
+    "icon": "✨",
+    "status": "featured",
+    "offer": "Up to 25% OFF",
+    "banner": "Delhi Beauty Week",
+    "products": [
+      {
+        "name": "Salon Service Voucher",
+        "price": 749,
+        "oldPrice": 999,
+        "offer": "25% OFF"
+      }
+    ]
+  },
+  {
+    "id": "bengaluru-brew-house",
+    "name": "Brew House",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "locality": "Koramangala",
+    "type": "Food & Dining",
+    "icon": "☕",
+    "status": "featured",
+    "offer": "₹200 OFF above ₹999",
+    "banner": "Bengaluru Café Deals",
+    "products": [
+      {
+        "name": "₹1,000 Café Voucher",
+        "price": 800,
+        "oldPrice": 1000,
+        "offer": "₹200 OFF"
+      }
+    ]
+  },
+  {
+    "id": "bengaluru-fit-zone",
+    "name": "Fit Zone",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "locality": "Indiranagar",
+    "type": "Fitness",
+    "icon": "🏋️",
+    "status": "featured",
+    "offer": "30% OFF membership offers",
+    "banner": "Bengaluru Fitness Deals",
+    "products": [
+      {
+        "name": "1 Month Fitness Pass",
+        "price": 1399,
+        "oldPrice": 1999,
+        "offer": "30% OFF"
+      }
+    ]
+  }
 ]
