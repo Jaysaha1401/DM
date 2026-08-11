@@ -1,49 +1,56 @@
-const sliderImages = document.querySelectorAll(".product-slider img");
+const sliders = document.querySelectorAll(".product-slider");
 
-const previousButton = document.querySelector(".slider-prev");
-const nextButton = document.querySelector(".slider-next");
+sliders.forEach((slider) => {
+    const images = slider.querySelectorAll("img");
+    const previousButton = slider.querySelector(".slider-prev");
+    const nextButton = slider.querySelector(".slider-next");
+    const dots = slider.querySelectorAll(".slider-dots .dot");
 
-let currentImage = 0;
+    if (!images.length) return;
 
-// Show only the current image
-function showImage(index) {
-    sliderImages.forEach((image, i) => {
-        image.style.display = i === index ? "block" : "none";
+    let currentImage = 0;
+
+    function showImage(index) {
+        currentImage = (index + images.length) % images.length;
+
+        images.forEach((image, i) => {
+            image.classList.toggle("is-active", i === currentImage);
+        });
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === currentImage);
+        });
+    }
+
+    function nextImage() {
+        showImage(currentImage + 1);
+    }
+
+    function previousImage() {
+        showImage(currentImage - 1);
+    }
+
+    nextButton?.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        nextImage();
     });
-}
 
-// Next image
-nextButton.addEventListener("click", () => {
-    currentImage++;
+    previousButton?.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        previousImage();
+    });
 
-    if (currentImage >= sliderImages.length) {
-        currentImage = 0;
-    }
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            showImage(index);
+        });
+    });
 
-    showImage(currentImage);
+    showImage(0);
+
+    setInterval(nextImage, 3000);
 });
-
-// Previous image
-previousButton.addEventListener("click", () => {
-    currentImage--;
-
-    if (currentImage < 0) {
-        currentImage = sliderImages.length - 1;
-    }
-
-    showImage(currentImage);
-});
-
-// Start with first image
-showImage(currentImage);
-
-// Automatic change every 3 seconds
-setInterval(() => {
-    currentImage++;
-
-    if (currentImage >= sliderImages.length) {
-        currentImage = 0;
-    }
-
-    showImage(currentImage);
-}, 3000);
