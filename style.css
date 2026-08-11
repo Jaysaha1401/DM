@@ -242,3 +242,43 @@ body{
 .product-slider img:first-child {
     display: block;
 }
+.product-slider {
+    position: relative;
+}
+
+.product-slider .slider-prev,
+.product-slider .slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 24px;
+    line-height: 36px;
+
+    cursor: pointer;
+    z-index: 10;
+}
+
+.product-slider .slider-prev {
+    left: 10px;
+}
+
+.product-slider .slider-next {
+    right: 10px;
+}
+
+.product-slider .slider-prev:hover,
+.product-slider .slider-next:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
