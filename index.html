@@ -1,220 +1,127 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DealMantra | Best Deals & Offers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<html>
-
-    <head>
-        <link rel="stylesheet" href="style.css">
-
-    </head>
-    <body>
-        <div class="navbar">
-
+<div class="navbar">
     <div class="logo">
         <h2>DealMantra</h2>
     </div>
 
     <div class="search">
-        <input class="search-box" type="text" placeholder="Search Deals">
+        <input class="search-box" type="text" placeholder="Search Deals" aria-label="Search deals">
     </div>
-<div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Categories</a>
-    <a href="#">Offers</a>
-    <a href="#">Contact</a>
-</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#featured-deals">Offers</a>
+        <a href="#footer">Contact</a>
+    </div>
+
     <div class="nav-actions">
-        <button>Login</button>
+        <button type="button">Login</button>
     </div>
-
 </div>
 
-    <section class="hero">
-        <div class="overlay">
-
-    <h1>Welcome to DealMantra</h1>
-
-    <p>Deals That Matter!</p>
-
-    <p class="hero-subtitle">
-        Discover the best deals, discounts, and offers every day.
-    </p>
-
-    <button>Explore Deals</button>
+<section class="hero">
+    <div class="overlay">
+        <h1>Welcome to DealMantra</h1>
+        <p>Deals That Matter!</p>
+        <p class="hero-subtitle">Discover the best deals, discounts, and offers every day.</p>
+        <a class="hero-button" href="#featured-deals">Explore Deals</a>
     </div>
 </section>
-<section class="categories">
 
+<section class="categories" id="categories">
     <h2>Browse Categories</h2>
 
     <div class="category-grid">
-
-        <div class="category-card">
-            🍔
-            <h3>Food</h3>
-        </div>
-
-        <div class="category-card">
-            👕
-            <h3>Fashion</h3>
-        </div>
-
-        <div class="category-card">
-            💻
-            <h3>Electronics</h3>
-        </div>
-
-        <div class="category-card">
-            ✈️
-            <h3>Travel</h3>
-        </div>
-
-        <div class="category-card">
-            🎮
-            <h3>Gaming</h3>
-        </div>
-
-        <div class="category-card">
-            📚
-            <h3>Books</h3>
-        </div>
-
+        <div class="category-card"><span class="category-icon">🍔</span><h3>Food</h3></div>
+        <div class="category-card"><span class="category-icon">👕</span><h3>Fashion</h3></div>
+        <div class="category-card"><span class="category-icon">💻</span><h3>Electronics</h3></div>
+        <div class="category-card"><span class="category-icon">✈️</span><h3>Travel</h3></div>
+        <div class="category-card"><span class="category-icon">🎮</span><h3>Gaming</h3></div>
+        <div class="category-card"><span class="category-icon">📚</span><h3>Books</h3></div>
     </div>
-
 </section>
-<section class="featured-deals">
 
+<section class="featured-deals" id="featured-deals">
     <h2>🔥 Featured Deals</h2>
 
     <div class="deals-grid">
 
         <div class="deal-card">
-
-                   <div class="product-slider" data-product="iphone">
-            <img src="Image/iphone-1.jpg" alt="iPhone 16 Pro">
-            <img src="Image/iphone-2.jpg" alt="iPhone 16 Pro">
-            <img src="Image/iphone-3.jpg" alt="iPhone 16 Pro">
-            <img src="Image/iphone-4.jpg" alt="iPhone 16 Pro">
-            <button type="button" class="slider-prev" aria-label="Previous image">‹</button>
-            <button type="button" class="slider-next" aria-label="Next image">›</button>
-            <div class="slider-dots">
-            <span class="dot active" aria-label="Show image 1"></span>
-            <span class="dot" aria-label="Show image 2"></span>
-            <span class="dot" aria-label="Show image 3"></span>
-            <span class="dot" aria-label="Show image 4"></span>
+            <div class="product-slider" data-product="iphone">
+                <img src="Image/iphone-1.jpg" alt="iPhone 16 Pro">
+                <img src="Image/iphone-2.jpg" alt="iPhone 16 Pro">
+                <img src="Image/iphone-3.jpg" alt="iPhone 16 Pro">
+                <img src="Image/iphone-4.jpg" alt="iPhone 16 Pro">
+                <button type="button" class="slider-prev" aria-label="Previous image">‹</button>
+                <button type="button" class="slider-next" aria-label="Next image">›</button>
+                <div class="slider-dots" aria-label="iPhone images">
+                    <button type="button" class="dot active" aria-label="Show image 1"></button>
+                    <button type="button" class="dot" aria-label="Show image 2"></button>
+                    <button type="button" class="dot" aria-label="Show image 3"></button>
+                    <button type="button" class="dot" aria-label="Show image 4"></button>
+                </div>
             </div>
-        </div>
             <h3>iPhone 16 Pro</h3>
-
             <p class="price">₹74,999</p>
-
             <span class="discount-badge">35% OFF</span>
-
             <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">
-             Latest Apple flagship with A18 chip.
-            </p>
-
-            <button>View Deal</button>
-
+            <p class="description">Latest Apple flagship with A18 chip.</p>
+            <a href="products/iphone.html" class="deal-button">View Deal</a>
         </div>
+
         <div class="deal-card">
-
-                    <div class="product-slider" data-product="lenovo">
-            <img src="Image/lenovo-1.jpg" alt="Lenovo Laptop">
-            <img src="Image/lenovo-2.jpg" alt="Lenovo Laptop">
-            <img src="Image/lenovo-3.jpg" alt="Lenovo Laptop">
-            <img src="Image/lenovo-4.jpg" alt="Lenovo Laptop">
-            <button type="button" class="slider-prev" aria-label="Previous image">‹</button>
-            <button type="button" class="slider-next" aria-label="Next image">›</button>
-            <div class="slider-dots">
-            <span class="dot active" aria-label="Show image 1"></span>
-            <span class="dot" aria-label="Show image 2"></span>
-            <span class="dot" aria-label="Show image 3"></span>
-            <span class="dot" aria-label="Show image 4"></span>
+            <div class="product-slider" data-product="lenovo">
+                <img src="Image/lenovo-laptop-1.jpg" alt="Lenovo Laptop">
             </div>
-        </div>
-
             <h3>Lenovo Laptop</h3>
-
             <p class="price">₹49,999</p>
-
             <span class="discount-badge">50% OFF</span>
-
             <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">
-             Latest Lenovo flagship with 16GB RAM.
-            </p>
-
-            <button>View Deal</button>
-
+            <p class="description">Latest Lenovo laptop with 16GB RAM.</p>
+            <a href="products/lenovo.html" class="deal-button">View Deal</a>
         </div>
+
         <div class="deal-card">
-
-                    <div class="product-slider" data-product="puma">
-            <img src="Image/puma-1.jpg" alt="Puma Shoes">
-            <img src="Image/puma-2.jpg" alt="Puma Shoes">
-            <img src="Image/puma-3.jpg" alt="Puma Shoes">
-            <img src="Image/puma-4.jpg" alt="Puma Shoes">
-            <button type="button" class="slider-prev" aria-label="Previous image">‹</button>
-            <button type="button" class="slider-next" aria-label="Next image">›</button>
-            <div class="slider-dots">
-            <span class="dot active" aria-label="Show image 1"></span>
-            <span class="dot" aria-label="Show image 2"></span>
-            <span class="dot" aria-label="Show image 3"></span>
-            <span class="dot" aria-label="Show image 4"></span>
+            <div class="product-slider" data-product="puma">
+                <img src="Image/puma-shoes-1.jpg" alt="Puma Shoes">
             </div>
-        </div>
-
             <h3>Puma Shoes</h3>
-
             <p class="price">₹4,999</p>
-
             <span class="discount-badge">51% OFF</span>
-
             <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">
-             Latest Puma shoes with enhanced comfort.
-            </p>
-
-            <button>View Deal</button>
-
+            <p class="description">Latest Puma shoes with enhanced comfort.</p>
+            <a href="products/puma.html" class="deal-button">View Deal</a>
         </div>
+
         <div class="deal-card">
-
-                    <div class="product-slider" data-product="headphones">
-            <img src="Image/headphones-1.jpg" alt="Headphones">
-            <img src="Image/headphones-2.jpg" alt="Headphones">
-            <img src="Image/headphones-3.jpg" alt="Headphones">
-            <img src="Image/headphones-4.jpg" alt="Headphones">
-            <button type="button" class="slider-prev" aria-label="Previous image">‹</button>
-            <button type="button" class="slider-next" aria-label="Next image">›</button>
-            <div class="slider-dots">
-            <span class="dot active" aria-label="Show image 1"></span>
-            <span class="dot" aria-label="Show image 2"></span>
-            <span class="dot" aria-label="Show image 3"></span>
-            <span class="dot" aria-label="Show image 4"></span>
+            <div class="product-slider" data-product="headphones">
+                <img src="Image/headphones-1.jpg" alt="Headphones">
             </div>
-        </div>
-
             <h3>Headphones</h3>
-
             <p class="price">₹999</p>
-
             <span class="discount-badge">70% OFF</span>
-
             <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">
-             Latest Apple flagship with A18 chip.
-            </p>
-
-            <button>View Deal</button>
-
+            <p class="description">Premium headphones with immersive sound.</p>
+            <a href="products/headphones.html" class="deal-button">View Deal</a>
         </div>
 
     </div>
-
 </section>
-    <script src="script.js"></script>
-</body>
 
+<footer id="footer">
+    <p>© 2026 DealMantra. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
