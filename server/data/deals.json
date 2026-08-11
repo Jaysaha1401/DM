@@ -1,0 +1,6 @@
+[
+  {"id":"iphone","name":"iPhone 16 Pro","store":"Apple / Affiliate Deal","price":74999,"old":99999,"discount":35,"rating":4.9,"category":"Electronics","image":"Image/iphone-1.jpg","page":"products/iphone.html"},
+  {"id":"lenovo","name":"Lenovo Laptop","store":"Lenovo / Affiliate Deal","price":49999,"old":99999,"discount":50,"rating":4.8,"category":"Electronics","image":"Image/lenovo-laptop-1.jpg","page":"products/lenovo.html"},
+  {"id":"puma","name":"Puma Shoes","store":"Puma / Affiliate Deal","price":4999,"old":9999,"discount":51,"rating":4.7,"category":"Fashion","image":"Image/puma-shoes-1.jpg","page":"products/puma.html"},
+  {"id":"headphones","name":"Premium Headphones","store":"Audio Store / Affiliate Deal","price":999,"old":3299,"discount":70,"rating":4.6,"category":"Electronics","image":"Image/headphones-1.jpg","page":"products/headphones.html"}
+]

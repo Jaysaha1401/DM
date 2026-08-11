@@ -1,72 +1,44 @@
-document.querySelectorAll(".product-slider").forEach((slider) => {
-    const images = [...slider.querySelectorAll(":scope > img")];
-    const previousButton = slider.querySelector(".slider-prev");
-    const nextButton = slider.querySelector(".slider-next");
-    const dots = [...slider.querySelectorAll(".slider-dots .dot")];
-
-    if (!images.length) return;
-
-    let currentImage = 0;
-    let timer;
-
-    function showImage(index) {
-        currentImage = (index + images.length) % images.length;
-
-        images.forEach((image, i) => {
-            image.classList.toggle("is-active", i === currentImage);
-        });
-
-        dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === currentImage);
-            dot.setAttribute("aria-current", i === currentImage ? "true" : "false");
-        });
-    }
-
-    function nextImage() {
-        showImage(currentImage + 1);
-    }
-
-    function previousImage() {
-        showImage(currentImage - 1);
-    }
-
-    // A single-image product does not need arrows or dots.
-    if (images.length <= 1) {
-        previousButton?.remove();
-        nextButton?.remove();
-        slider.querySelector(".slider-dots")?.remove();
-        showImage(0);
-        return;
-    }
-
-    previousButton?.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        previousImage();
-        restartTimer();
-    });
-
-    nextButton?.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        nextImage();
-        restartTimer();
-    });
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener("click", (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            showImage(index);
-            restartTimer();
-        });
-    });
-
-    function restartTimer() {
-        clearInterval(timer);
-        timer = setInterval(nextImage, 3000);
-    }
-
-    showImage(0);
-    restartTimer();
-});
+const localDeals=[
+{id:'iphone',name:'iPhone 16 Pro',store:'Apple / Affiliate Deal',price:74999,old:99999,discount:35,rating:4.9,category:'Electronics',image:'Image/iphone-1.jpg',page:'products/iphone.html'},
+{id:'lenovo',name:'Lenovo Laptop',store:'Lenovo / Affiliate Deal',price:49999,old:99999,discount:50,rating:4.8,category:'Electronics',image:'Image/lenovo-laptop-1.jpg',page:'products/lenovo.html'},
+{id:'puma',name:'Puma Shoes',store:'Puma / Affiliate Deal',price:4999,old:9999,discount:51,rating:4.7,category:'Fashion',image:'Image/puma-shoes-1.jpg',page:'products/puma.html'},
+{id:'headphones',name:'Premium Headphones',store:'Audio Store / Affiliate Deal',price:999,old:3299,discount:70,rating:4.6,category:'Electronics',image:'Image/headphones-1.jpg',page:'products/headphones.html'}
+];
+const localGiftCards=[
+{id:'amazon-gift',brand:'Amazon',name:'Amazon Pay Gift Card',range:'₹50 - ₹10,000',discount:5,cls:'amazon-bg'},
+{id:'flipkart-gift',brand:'Flipkart',name:'Flipkart Gift Card',range:'₹100 - ₹10,000',discount:3,cls:'flipkart-bg'},
+{id:'play-gift',brand:'Google Play',name:'Google Play Gift Code',range:'₹10 - ₹5,000',discount:4,cls:'play-bg'},
+{id:'netflix-gift',brand:'Netflix',name:'Netflix Gift Card',range:'₹149 - ₹1,499',discount:5,cls:'netflix-bg'},
+{id:'spotify-gift',brand:'Spotify',name:'Spotify Gift Card',range:'₹119 - ₹1,189',discount:5,cls:'spotify-bg'},
+{id:'zomato-gift',brand:'Zomato',name:'Zomato Gift Card',range:'₹100 - ₹2,000',discount:4,cls:'zomato-bg'}
+];
+const localCategories=[['🎁','All Gift Cards','gift-cards.html'],['🎮','Gaming','deals.html?category=Gaming'],['▶','OTT & Entertainment','gift-cards.html?category=Entertainment'],['🍴','Food & Dining','deals.html?category=Food'],['✈️','Travel','deals.html?category=Travel'],['🛍','Fashion','deals.html?category=Fashion'],['🎧','Electronics','deals.html?category=Electronics'],['🌸','Beauty & Health','deals.html?category=Beauty'],['🎓','Education','deals.html?category=Education'],['▦','View All','deals.html']];
+const localBrands=['Amazon','Flipkart','Myntra','Zomato','Swiggy','Netflix','Spotify','Google Play','Ajio','Nykaa','Croma','MakeMyTrip'];
+const localBusinessesFallback=[{name:'The Local Café',city:'Guwahati',type:'Food & Dining',icon:'☕'},{name:'Urban Style Studio',city:'Guwahati',type:'Fashion & Beauty',icon:'✂️'},{name:'Green Basket',city:'Guwahati',type:'Grocery & Local',icon:'🛒'}];
+const money=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(n);
+let deals=localDeals; let giftCards=localGiftCards; let categories=localCategories; let brands=localBrands; let localBusinesses=localBusinessesFallback;
+async function loadApiData(){if(location.protocol==='file:')return; try{const r=await fetch('/api/bootstrap'); if(!r.ok)throw new Error('API unavailable'); const d=await r.json(); deals=d.deals||deals; giftCards=d.giftCards||giftCards; categories=(d.categories||[]).map(c=>[c.icon,c.name,c.url]); brands=d.brands||brands; localBusinesses=d.localBusinesses||localBusinesses;}catch(e){console.info('DealMantra: using local fallback data. Start the Node server for API-backed data.');}}
+function getWishlist(){return JSON.parse(localStorage.getItem('dm_wishlist')||'[]')}
+function setWishlist(v){localStorage.setItem('dm_wishlist',JSON.stringify(v))}
+function getCart(){return JSON.parse(localStorage.getItem('dm_cart')||'[]')}
+function setCart(v){localStorage.setItem('dm_cart',JSON.stringify(v)); updateHeaderCounts()}
+function toggleWish(id){let w=getWishlist();w=w.includes(id)?w.filter(x=>x!==id):[...w,id];setWishlist(w);renderCurrentPage();updateHeaderCounts()}
+function addCart(item){let c=getCart();let found=c.find(x=>x.id===item.id);if(found)found.qty++;else c.push({...item,qty:1});setCart(c);alert(`${item.name} added to cart.`)}
+function updateHeaderCounts(){const w=getWishlist().length,c=getCart().reduce((a,x)=>a+x.qty,0);document.querySelectorAll('[data-wishlist-count]').forEach(x=>x.textContent=w);document.querySelectorAll('[data-cart-count]').forEach(x=>x.textContent=c)}
+function header(){document.getElementById('site-header').innerHTML=`<div class="topbar"><div class="container topbar-inner"><b>◉ Welcome to DealMantra! &nbsp; Your one-stop destination for Gift Cards, Deals & More.</b><div class="topbar-links"><a href="account.html">▣ Download App</a><a href="local-businesses.html">▱ Sell Gift Cards</a><a href="account.html">? Help & Support</a><a href="account.html">◌ Track Order</a></div></div></div><header class="main-header"><div class="container header-row"><a class="brand" href="index.html"><span class="brand-mark">♧</span><span><span class="brand-name"><span>Deal</span>Mantra</span><small class="tagline">Deals that matter!</small></span></a><div class="search-wrap"><select class="search-category" id="global-category"><option>All Categories</option><option>Gift Cards</option><option>Deals</option><option>Electronics</option><option>Fashion</option></select><input class="search-input" id="global-search" placeholder="Search for gift cards, brands or categories..." aria-label="Search"><button class="search-btn" id="global-search-btn">Search</button></div><div class="header-actions"><a class="action-link" href="wishlist.html">♡ Wishlist <span class="count" data-wishlist-count>0</span></a><a class="action-link" href="cart.html">🛒 Cart <span class="count" data-cart-count>0</span></a><a class="login-btn" href="account.html">Login / Sign Up</a></div></div><nav class="container nav-row"><a class="all-cat" href="deals.html">☰ &nbsp; All Categories</a><a href="gift-cards.html">Gift Cards</a><a href="deals.html">Affiliate Deals</a><a href="deals.html">Top Deals</a><a href="deals.html?sort=new">New Arrivals</a><a href="gift-cards.html">Popular Brands</a><a href="local-businesses.html">Local Store</a><a href="deals.html">Offers <span class="hot">HOT</span></a></nav></header>`}
+function footer(){document.getElementById('site-footer').innerHTML=`<footer class="site-footer"><div class="container footer-grid"><div><div class="brand"><span class="brand-mark">♧</span><span><span class="brand-name"><span>Deal</span>Mantra</span><small class="tagline">Deals that matter!</small></span></div><p>Exciting gift cards, affiliate deals and local offers for India.</p></div><div><div class="footer-title">Shop</div><a href="gift-cards.html">Gift Cards</a><a href="deals.html">Affiliate Deals</a><a href="deals.html">Top Offers</a></div><div><div class="footer-title">Discover</div><a href="deals.html">Categories</a><a href="local-businesses.html">Local Businesses</a><a href="wishlist.html">Wishlist</a></div><div><div class="footer-title">Help</div><a href="account.html">My Account</a><a href="cart.html">Orders & Cart</a><a href="account.html">Support</a></div><div><div class="footer-title">For Businesses</div><a href="local-businesses.html">Promote Your Business</a><a href="local-businesses.html">Sell Gift Cards</a><a href="admin.html">Business Dashboard</a></div></div><div class="container copyright">© 2026 DealMantra. All rights reserved. &nbsp; | &nbsp; Built for the next generation of Indian deals.</div></footer>`}
+function renderCategories(){const el=document.getElementById('category-scroller');if(el)el.innerHTML=categories.map(c=>`<a class="category-item" href="${c[2]}"><span class="category-icon">${c[0]}</span><b>${c[1]}</b></a>`).join('')}
+function giftMarkup(g){return `<article class="gift-card"><div class="gift-art ${g.cls}"><span class="gift-discount">${g.discount}% OFF</span><span>${g.brand}<small>GIFT CARD</small></span></div><h3>${g.name}</h3><p>${g.range}</p></article>`}
+function dealMarkup(d){const wished=getWishlist().includes(d.id);return `<article class="product-card"><div class="product-image"><img src="${d.image}" alt="${d.name}"><button class="heart" data-wish="${d.id}" aria-label="Wishlist">${wished?'♥':'♡'}</button></div><div class="card-body"><span class="store">${d.store}</span><h3>${d.name}</h3><div><span class="product-price">${money(d.price)}</span><span class="old-price">${money(d.old)}</span></div><span class="badge">${d.discount}% OFF</span><div class="rating">⭐ ${d.rating}</div><div class="card-actions"><a class="btn btn-outline" href="${d.page}">View Deal</a><button class="btn btn-primary" data-cart="${d.id}">Add to Cart</button></div></div></article>`}
+function bindCards(){document.querySelectorAll('[data-wish]').forEach(b=>b.onclick=()=>toggleWish(b.dataset.wish));document.querySelectorAll('[data-cart]').forEach(b=>b.onclick=()=>{const d=deals.find(x=>x.id===b.dataset.cart);addCart(d)})}
+function renderHome(){renderCategories();const g=document.getElementById('gift-card-grid');if(g)g.innerHTML=giftCards.map(giftMarkup).join('');const f=document.getElementById('featured-grid');if(f)f.innerHTML=deals.map(dealMarkup).join('');const bg=document.getElementById('brand-grid');if(bg)bg.innerHTML=brands.slice(0,6).map(b=>`<div class="brand-pill">${b}</div>`).join('');const lg=document.getElementById('local-preview-grid');if(lg)lg.innerHTML=localBusinesses.map(b=>`<div class="local-card"><div class="local-logo">${b.icon}</div><div><h3>${b.name}</h3><p>${b.type} · ${b.city}</p><p style="margin-top:8px;color:#7c3aed;font-weight:800">Coming soon on DealMantra</p></div></div>`).join('');const dd=document.getElementById('deal-day');if(dd)dd.innerHTML=`<span class="timer">Ends in 12:45:30</span><h3>Deal of the Day</h3><div class="deal-day-card"><div class="deal-day-art">🛍️</div><div><h4>Myntra Gift Card</h4><strong>10% OFF</strong><p>₹100 - ₹10,000</p><a class="btn btn-primary" href="gift-cards.html">Buy Now</a></div></div>`;bindCards()}
+function renderCatalog(){const grid=document.getElementById('catalog-grid');if(!grid)return;let list=[...deals];const params=new URLSearchParams(location.search);const cat=params.get('category');if(cat)list=list.filter(d=>d.category.toLowerCase()===cat.toLowerCase());grid.innerHTML=list.length?list.map(dealMarkup).join(''):`<div class="empty-state" style="grid-column:1/-1">No deals found for this category yet.</div>`;document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{const v=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');grid.innerHTML=(v==='All'?deals:deals.filter(d=>d.category===v)).map(dealMarkup).join('');bindCards()});bindCards()}
+function renderGiftPage(){const grid=document.getElementById('gift-catalog');if(grid)grid.innerHTML=giftCards.map(g=>`<article class="gift-card"><div class="gift-art ${g.cls}"><span class="gift-discount">${g.discount}% OFF</span><span>${g.brand}<small>GIFT CARD</small></span></div><h3>${g.name}</h3><p>${g.range}</p><button class="btn btn-primary" style="width:calc(100% - 12px);margin:12px 6px 0" onclick="alert('Gift card checkout will connect to the gift-card provider in the backend phase.')">Buy Gift Card</button></article>`).join('')}
+function renderWishlist(){const el=document.getElementById('wishlist-list');if(!el)return;const w=getWishlist();const list=deals.filter(d=>w.includes(d.id));el.innerHTML=list.length?`<div class="catalog-grid">${list.map(dealMarkup).join('')}</div>`:`<div class="empty-state">Your wishlist is empty.<br><a class="btn btn-primary" style="margin-top:15px" href="deals.html">Explore Deals</a></div>`;bindCards()}
+function renderCart(){const el=document.getElementById('cart-list');if(!el)return;const c=getCart();if(!c.length){el.innerHTML='<div class="empty-state">Your cart is empty.<br><a class="btn btn-primary" style="margin-top:15px" href="deals.html">Start Shopping</a></div>';return}el.innerHTML=c.map(i=>`<div class="cart-item"><div><b>${i.name}</b><div style="font-size:12px;color:#777">${money(i.price)} each</div></div><div class="qty-controls"><button data-minus="${i.id}">−</button><b>${i.qty}</b><button data-plus="${i.id}">+</button><b>${money(i.price*i.qty)}</b></div></div>`).join('');const total=c.reduce((a,i)=>a+i.price*i.qty,0);el.insertAdjacentHTML('afterend',`<div class="total-box"><b>Total: ${money(total)}</b><button class="btn btn-primary" style="float:right" onclick="alert('Checkout will connect to a payment gateway in the backend phase.')">Proceed to Checkout</button></div>`);el.querySelectorAll('[data-plus]').forEach(b=>b.onclick=()=>changeQty(b.dataset.plus,1));el.querySelectorAll('[data-minus]').forEach(b=>b.onclick=()=>changeQty(b.dataset.minus,-1))}
+function changeQty(id,n){let c=getCart();const x=c.find(i=>i.id===id);if(x)x.qty+=n;c=c.filter(i=>i.qty>0);setCart(c);renderCart()}
+function searchAll(q){q=q.trim().toLowerCase();if(!q)return;location.href=`deals.html?search=${encodeURIComponent(q)}`}
+function renderSearch(){const grid=document.getElementById('catalog-grid');if(!grid)return;const q=new URLSearchParams(location.search).get('search');let list=deals;if(q)list=deals.filter(d=>`${d.name} ${d.store} ${d.category}`.toLowerCase().includes(q.toLowerCase()));grid.innerHTML=list.length?list.map(dealMarkup).join(''):`<div class="empty-state" style="grid-column:1/-1">No matching deals. Try another search.</div>`;bindCards()}
+function renderCurrentPage(){const page=document.body.dataset.page;if(page==='home')renderHome();if(page==='deals'){renderCatalog();renderSearch()}if(page==='gift-cards')renderGiftPage();if(page==='wishlist')renderWishlist();if(page==='cart')renderCart();}
+async function init(){await loadApiData();if(document.getElementById('site-header'))header();if(document.getElementById('site-footer'))footer();updateHeaderCounts();renderCurrentPage();const search=document.getElementById('global-search');const btn=document.getElementById('global-search-btn');btn?.addEventListener('click',()=>searchAll(search.value));search?.addEventListener('keydown',e=>{if(e.key==='Enter')searchAll(search.value)});document.getElementById('newsletter-form')?.addEventListener('submit',e=>{e.preventDefault();alert('Thanks! You are on the DealMantra deal-alert list.');e.target.reset()})}
+document.addEventListener('DOMContentLoaded',init);

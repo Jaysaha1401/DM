@@ -1,127 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DealMantra | Best Deals & Offers</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DealMantra - exciting gift cards, affiliate deals and local offers in India.">
+<title>DealMantra | Deals that matter!</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="home">
+<div id="site-header"></div>
 
-<div class="navbar">
-    <div class="logo">
-        <h2>DealMantra</h2>
+<main>
+<section class="hero-marketplace">
+  <div class="hero-content">
+    <span class="eyebrow">INDIA'S DEALS & GIFT CARD MARKETPLACE</span>
+    <h1>Save more on <span>Gift Cards, Deals & Offers.</span></h1>
+    <p>Discover exciting savings across shopping, food, travel, entertainment and more with DealMantra.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="gift-cards.html">Explore Gift Cards</a><a class="btn btn-ghost" href="deals.html">Browse Deals</a></div>
+    <div class="trust-row"><span>✓ Secure payments</span><span>⚡ Instant delivery</span><span>₹ Best prices</span><span>◔ 24/7 support</span></div>
+  </div>
+  <div class="hero-art" aria-label="Gift card marketplace preview">
+    <div class="gift-stack">
+      <div class="hero-card amazon">amazon<span>Gift Card</span></div><div class="hero-card flipkart">Flipkart<span>Gift Card</span></div><div class="hero-card zomato">zomato<span>E-GIFT CARD</span></div><div class="hero-card netflix">NETFLIX<span>Gift Card</span></div><div class="hero-card spotify">Spotify<span>Gift Card</span></div><div class="hero-card play">▶ Google Play<span>Gift Code</span></div>
     </div>
-
-    <div class="search">
-        <input class="search-box" type="text" placeholder="Search Deals" aria-label="Search deals">
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="#categories">Categories</a>
-        <a href="#featured-deals">Offers</a>
-        <a href="#footer">Contact</a>
-    </div>
-
-    <div class="nav-actions">
-        <button type="button">Login</button>
-    </div>
-</div>
-
-<section class="hero">
-    <div class="overlay">
-        <h1>Welcome to DealMantra</h1>
-        <p>Deals That Matter!</p>
-        <p class="hero-subtitle">Discover the best deals, discounts, and offers every day.</p>
-        <a class="hero-button" href="#featured-deals">Explore Deals</a>
-    </div>
+  </div>
+  <div class="hero-dots"><span class="active"></span><span></span><span></span></div>
 </section>
 
-<section class="categories" id="categories">
-    <h2>Browse Categories</h2>
+<section class="category-strip section-overlap" id="categories"><div class="category-scroller" id="category-scroller"></div></section>
 
-    <div class="category-grid">
-        <div class="category-card"><span class="category-icon">🍔</span><h3>Food</h3></div>
-        <div class="category-card"><span class="category-icon">👕</span><h3>Fashion</h3></div>
-        <div class="category-card"><span class="category-icon">💻</span><h3>Electronics</h3></div>
-        <div class="category-card"><span class="category-icon">✈️</span><h3>Travel</h3></div>
-        <div class="category-card"><span class="category-icon">🎮</span><h3>Gaming</h3></div>
-        <div class="category-card"><span class="category-icon">📚</span><h3>Books</h3></div>
-    </div>
+<section class="section container">
+  <div class="section-heading"><div><span class="eyebrow">TOP PICKS</span><h2>Best Selling Gift Cards</h2></div><a href="gift-cards.html" class="text-link">View all →</a></div>
+  <div class="gift-layout"><div class="gift-grid" id="gift-card-grid"></div><aside class="deal-day" id="deal-day"></aside></div>
 </section>
 
-<section class="featured-deals" id="featured-deals">
-    <h2>🔥 Featured Deals</h2>
+<section class="benefits-bar container"><div><b>🛍 Great Deals</b><span>Save big on every purchase</span></div><div><b>🚚 Instant Delivery</b><span>Receive codes quickly</span></div><div><b>↩ Easy Refunds</b><span>Hassle-free support</span></div><div><b>🔒 Trusted Platform</b><span>Secure transactions</span></div></section>
 
-    <div class="deals-grid">
+<section class="section soft-section" id="featured-deals"><div class="container"><div class="section-heading"><div><span class="eyebrow">SHOP SMART</span><h2>Featured Affiliate Deals</h2></div><a href="deals.html" class="text-link">See all deals →</a></div><div class="product-grid" id="featured-grid"></div></div></section>
 
-        <div class="deal-card">
-            <div class="product-slider" data-product="iphone">
-                <img src="Image/iphone-1.jpg" alt="iPhone 16 Pro">
-                <img src="Image/iphone-2.jpg" alt="iPhone 16 Pro">
-                <img src="Image/iphone-3.jpg" alt="iPhone 16 Pro">
-                <img src="Image/iphone-4.jpg" alt="iPhone 16 Pro">
-                <button type="button" class="slider-prev" aria-label="Previous image">‹</button>
-                <button type="button" class="slider-next" aria-label="Next image">›</button>
-                <div class="slider-dots" aria-label="iPhone images">
-                    <button type="button" class="dot active" aria-label="Show image 1"></button>
-                    <button type="button" class="dot" aria-label="Show image 2"></button>
-                    <button type="button" class="dot" aria-label="Show image 3"></button>
-                    <button type="button" class="dot" aria-label="Show image 4"></button>
-                </div>
-            </div>
-            <h3>iPhone 16 Pro</h3>
-            <p class="price">₹74,999</p>
-            <span class="discount-badge">35% OFF</span>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">Latest Apple flagship with A18 chip.</p>
-            <a href="products/iphone.html" class="deal-button">View Deal</a>
-        </div>
+<section class="section container"><div class="section-heading"><div><span class="eyebrow">DISCOVER</span><h2>Popular Brands</h2></div><a href="gift-cards.html" class="text-link">Explore brands →</a></div><div class="brand-grid" id="brand-grid"></div></section>
 
-        <div class="deal-card">
-            <div class="product-slider" data-product="lenovo">
-                <img src="Image/lenovo-laptop-1.jpg" alt="Lenovo Laptop">
-            </div>
-            <h3>Lenovo Laptop</h3>
-            <p class="price">₹49,999</p>
-            <span class="discount-badge">50% OFF</span>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">Latest Lenovo laptop with 16GB RAM.</p>
-            <a href="products/lenovo.html" class="deal-button">View Deal</a>
-        </div>
+<section class="section local-preview"><div class="container"><div class="section-heading"><div><span class="eyebrow">COMING NEXT</span><h2>Local Businesses on DealMantra</h2><p>We're building a place where local shops can promote offers, sell products and create their own gift cards.</p></div><a href="local-businesses.html" class="btn btn-outline">Explore Local</a></div><div class="local-grid" id="local-preview-grid"></div></div></section>
 
-        <div class="deal-card">
-            <div class="product-slider" data-product="puma">
-                <img src="Image/puma-shoes-1.jpg" alt="Puma Shoes">
-            </div>
-            <h3>Puma Shoes</h3>
-            <p class="price">₹4,999</p>
-            <span class="discount-badge">51% OFF</span>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">Latest Puma shoes with enhanced comfort.</p>
-            <a href="products/puma.html" class="deal-button">View Deal</a>
-        </div>
-
-        <div class="deal-card">
-            <div class="product-slider" data-product="headphones">
-                <img src="Image/headphones-1.jpg" alt="Headphones">
-            </div>
-            <h3>Headphones</h3>
-            <p class="price">₹999</p>
-            <span class="discount-badge">70% OFF</span>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">Premium headphones with immersive sound.</p>
-            <a href="products/headphones.html" class="deal-button">View Deal</a>
-        </div>
-
-    </div>
-</section>
-
-<footer id="footer">
-    <p>© 2026 DealMantra. All rights reserved.</p>
-</footer>
-
+<section class="newsletter"><div class="container newsletter-inner"><div><span class="eyebrow">DEAL ALERTS</span><h2>Get the best offers before they disappear.</h2><p>Join the DealMantra list for new gift cards, price drops and local offers.</p></div><form id="newsletter-form"><input type="email" required placeholder="Enter your email"><button class="btn btn-primary">Subscribe</button></form></div></section>
+</main>
+<div id="site-footer"></div>
 <script src="script.js"></script>
-</body>
-</html>
+</body></html>

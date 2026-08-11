@@ -1,0 +1,5 @@
+[
+  {"id":"local-cafe","name":"The Local Café","city":"Guwahati","type":"Food & Dining","icon":"☕","status":"coming-soon"},
+  {"id":"urban-style","name":"Urban Style Studio","city":"Guwahati","type":"Fashion & Beauty","icon":"✂️","status":"coming-soon"},
+  {"id":"green-basket","name":"Green Basket","city":"Guwahati","type":"Grocery & Local","icon":"🛒","status":"coming-soon"}
+]
