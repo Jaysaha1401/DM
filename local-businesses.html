@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover local businesses, offers, products and gift cards across Indian cities on OmniHubb.">
+<title>Local Businesses | OmniHubb</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="local-businesses">
+<div id="site-header"></div>
+
+<main>
+<section class="page-hero local-marketplace-hero">
+  <div class="container">
+    <span class="eyebrow" style="color:#c4b5fd">OMNIHUBB LOCAL</span>
+    <h1>Discover local businesses, offers & products near you.</h1>
+    <p>Explore businesses city by city, discover exclusive local deals, buy participating products and gift cards, and support great businesses across India.</p>
+    <div class="local-search-row">
+      <input id="local-search" class="local-search-input" placeholder="Search businesses, products or offers...">
+      <button id="local-search-btn" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="section-heading">
+    <div>
+      <span class="eyebrow">EXPLORE BY LOCATION</span>
+      <h2>Choose your city</h2>
+      <p>Start with a city and explore the local businesses currently listed on OmniHubb.</p>
+    </div>
+  </div>
+  <div class="city-tabs" id="city-tabs"></div>
+</section>
+
+<section class="section soft-section">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">LOCAL SPOTLIGHT</span>
+        <h2 id="local-title">Featured businesses in Guwahati</h2>
+        <p id="local-subtitle">Offers, products and gift-card opportunities from businesses in the selected city.</p>
+      </div>
+      <select id="local-type" class="local-select">
+        <option value="All">All categories</option>
+        <option>Food & Dining</option>
+        <option>Fashion & Beauty</option>
+        <option>Beauty & Wellness</option>
+        <option>Fitness</option>
+        <option>Grocery & Local</option>
+      </select>
+    </div>
+
+    <div class="local-banner-grid" id="local-banner-grid"></div>
+    <div class="local-business-grid" id="local-business-grid"></div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="section-heading">
+    <div>
+      <span class="eyebrow">LOCAL PRODUCTS</span>
+      <h2>Products & gift cards from local businesses</h2>
+      <p>As businesses join OmniHubb, their products, offers and branded gift cards can appear here.</p>
+    </div>
+  </div>
+  <div class="local-product-grid" id="local-product-grid"></div>
+</section>
+
+<section class="local-join-section">
+  <div class="container local-join-card">
+    <div>
+      <span class="eyebrow">FOR BUSINESS OWNERS</span>
+      <h2>Bring your business to OmniHubb.</h2>
+      <p>Create a business profile, promote your offers, list products and eventually sell your own digital gift cards to customers in your city.</p>
+    </div>
+    <a class="btn btn-primary" href="account.html">Partner With Us</a>
+  </div>
+</section>
+</main>
+
+<div id="site-footer"></div>
+<script src="script.js"></script>
+<script>
+const fallbackBusinesses = [
+  {id:'guwahati-local-cafe',name:'The Local Café',city:'Guwahati',state:'Assam',locality:'GS Road',type:'Food & Dining',icon:'☕',status:'featured',offer:'15% OFF on selected orders',banner:'Guwahati Food Week',products:[{name:'₹500 Café Voucher',price:425,oldPrice:500,offer:'15% OFF'},{name:'Coffee & Snack Combo',price:299,oldPrice:349,offer:'14% OFF'}]},
+  {id:'guwahati-urban-style',name:'Urban Style Studio',city:'Guwahati',state:'Assam',locality:'Beltola',type:'Fashion & Beauty',icon:'✂️',status:'featured',offer:'Flat ₹300 OFF on services',banner:'Beltola Style Offers',products:[{name:'Hair & Styling Voucher',price:799,oldPrice:1099,offer:'₹300 OFF'}]},
+  {id:'delhi-city-bites',name:'City Bites Kitchen',city:'Delhi',state:'Delhi',locality:'Saket',type:'Food & Dining',icon:'🍔',status:'featured',offer:'20% OFF on selected meals',banner:'Delhi Food Deals',products:[{name:'₹1,000 Dining Voucher',price:800,oldPrice:1000,offer:'20% OFF'},{name:'Dinner for Two',price:999,oldPrice:1299,offer:'23% OFF'}]},
+  {id:'delhi-glow-studio',name:'Glow Studio',city:'Delhi',state:'Delhi',locality:'Dwarka',type:'Beauty & Wellness',icon:'✨',status:'featured',offer:'Up to 25% OFF',banner:'Delhi Beauty Week',products:[{name:'Salon Service Voucher',price:749,oldPrice:999,offer:'25% OFF'}]},
+  {id:'bengaluru-brew-house',name:'Brew House',city:'Bengaluru',state:'Karnataka',locality:'Koramangala',type:'Food & Dining',icon:'☕',status:'featured',offer:'₹200 OFF above ₹999',banner:'Bengaluru Café Deals',products:[{name:'₹1,000 Café Voucher',price:800,oldPrice:1000,offer:'₹200 OFF'}]},
+  {id:'bengaluru-fit-zone',name:'Fit Zone',city:'Bengaluru',state:'Karnataka',locality:'Indiranagar',type:'Fitness',icon:'🏋️',status:'featured',offer:'30% OFF membership offers',banner:'Bengaluru Fitness Deals',products:[{name:'1 Month Fitness Pass',price:1399,oldPrice:1999,offer:'30% OFF'}]}
+];
+
+let localBusinessesPage = fallbackBusinesses;
+let selectedCity = 'Guwahati';
+
+function moneyLocal(n){
+  return new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(n);
+}
+
+async function loadLocalBusinesses(){
+  try{
+    if(location.protocol !== 'file:'){
+      const r = await fetch('/api/businesses');
+      if(r.ok){
+        const data = await r.json();
+        if(Array.isArray(data) && data.length) localBusinessesPage = data;
+      }
+    }
+  }catch(e){}
+  renderLocalMarketplace();
+}
+
+function cityList(){
+  return [...new Set(localBusinessesPage.map(b=>b.city))].sort();
+}
+
+function renderCityTabs(){
+  const el = document.getElementById('city-tabs');
+  el.innerHTML = cityList().map(city =>
+    `<button class="city-tab ${city===selectedCity?'active':''}" data-city="${city}">${city}<small>${localBusinessesPage.filter(b=>b.city===city).length} businesses</small></button>`
+  ).join('');
+  el.querySelectorAll('[data-city]').forEach(btn=>{
+    btn.onclick=()=>{
+      selectedCity=btn.dataset.city;
+      renderLocalMarketplace();
+    };
+  });
+}
+
+function renderLocalMarketplace(){
+  renderCityTabs();
+  const type = document.getElementById('local-type').value;
+  const q = document.getElementById('local-search').value.trim().toLowerCase();
+
+  let list = localBusinessesPage.filter(b=>b.city===selectedCity);
+  if(type !== 'All') list=list.filter(b=>b.type===type);
+  if(q) list=list.filter(b=>`${b.name} ${b.city} ${b.locality} ${b.type} ${b.offer||''} ${(b.products||[]).map(p=>p.name).join(' ')}`.toLowerCase().includes(q));
+
+  document.getElementById('local-title').textContent=`Featured businesses in ${selectedCity}`;
+  document.getElementById('local-subtitle').textContent=`${list.length} listed business${list.length===1?'':'es'} with local offers, products and gift-card opportunities.`;
+
+  document.getElementById('local-banner-grid').innerHTML = list.length ? list.map((b,i)=>
+    `<article class="local-banner local-banner-${i%4}">
+      <div><span class="local-banner-label">LOCAL DEAL</span><h3>${b.banner||b.name}</h3><p>${b.name} · ${b.locality||b.city}</p><strong>${b.offer||'Exclusive OmniHubb offer'}</strong></div>
+      <div class="local-banner-icon">${b.icon||'🏪'}</div>
+    </article>`
+  ).join('') : '';
+
+  document.getElementById('local-business-grid').innerHTML = list.length ? list.map(b=>
+    `<article class="local-business-card">
+      <div class="local-business-top"><div class="local-logo large">${b.icon||'🏪'}</div><div><span class="store">${b.type||'Local Business'}</span><h3>${b.name}</h3><p>📍 ${b.locality||''}, ${b.city}</p></div></div>
+      <div class="local-offer">${b.offer||'Special offer coming soon'}</div>
+      <div class="local-business-actions"><a class="btn btn-outline" href="local-businesses.html?business=${encodeURIComponent(b.id)}">View Business</a><a class="btn btn-primary" href="#local-products">View Products</a></div>
+    </article>`
+  ).join('') : `<div class="empty-state" style="grid-column:1/-1">No local businesses match your search yet. Try another city or category.</div>`;
+
+  const products = list.flatMap(b=>(b.products||[]).map(p=>({...p,business:b})));
+  document.getElementById('local-product-grid').innerHTML = products.length ? products.map(p=>
+    `<article class="local-product-card">
+      <div class="local-product-art">${p.business.icon||'🏪'}</div>
+      <div class="local-product-body"><span class="store">${p.business.name} · ${p.business.city}</span><h3>${p.name}</h3><div><strong>${moneyLocal(p.price)}</strong><span class="old-price">${moneyLocal(p.oldPrice)}</span></div><span class="badge">${p.offer}</span><a class="btn btn-primary" href="local-businesses.html?business=${encodeURIComponent(p.business.id)}#local-products">View Offer</a></div>
+    </article>`
+  ).join('') : `<div class="empty-state" style="grid-column:1/-1">Local products will appear here as businesses are onboarded.</div>`;
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('local-type').addEventListener('change',renderLocalMarketplace);
+  document.getElementById('local-search-btn').addEventListener('click',renderLocalMarketplace);
+  document.getElementById('local-search').addEventListener('keydown',e=>{if(e.key==='Enter')renderLocalMarketplace()});
+  loadLocalBusinesses();
+});
+</script>
+</body>
+</html>

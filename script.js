@@ -1,72 +1,63 @@
-document.querySelectorAll(".product-slider").forEach((slider) => {
-    const images = [...slider.querySelectorAll(":scope > img")];
-    const previousButton = slider.querySelector(".slider-prev");
-    const nextButton = slider.querySelector(".slider-next");
-    const dots = [...slider.querySelectorAll(".slider-dots .dot")];
+(() => {
+    let cart = 0;
+    let wishlist = 0;
 
-    if (!images.length) return;
+    const cartCount = document.getElementById("cartCount");
+    const wishCount = document.getElementById("wishCount");
+    const toast = document.getElementById("toast");
 
-    let currentImage = 0;
-    let timer;
-
-    function showImage(index) {
-        currentImage = (index + images.length) % images.length;
-
-        images.forEach((image, i) => {
-            image.classList.toggle("is-active", i === currentImage);
-        });
-
-        dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === currentImage);
-            dot.setAttribute("aria-current", i === currentImage ? "true" : "false");
-        });
+    function notify(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(window.__omniToast);
+        window.__omniToast = setTimeout(() => toast.classList.remove("show"), 1800);
     }
 
-    function nextImage() {
-        showImage(currentImage + 1);
-    }
-
-    function previousImage() {
-        showImage(currentImage - 1);
-    }
-
-    // A single-image product does not need arrows or dots.
-    if (images.length <= 1) {
-        previousButton?.remove();
-        nextButton?.remove();
-        slider.querySelector(".slider-dots")?.remove();
-        showImage(0);
-        return;
-    }
-
-    previousButton?.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        previousImage();
-        restartTimer();
-    });
-
-    nextButton?.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        nextImage();
-        restartTimer();
-    });
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener("click", (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            showImage(index);
-            restartTimer();
+    document.querySelectorAll("[data-cart]").forEach(btn => {
+        btn.addEventListener("click", () => {
+            cart++;
+            cartCount.textContent = cart;
+            notify("Added to cart");
         });
     });
 
-    function restartTimer() {
-        clearInterval(timer);
-        timer = setInterval(nextImage, 3000);
-    }
+    document.querySelectorAll(".icon-action[aria-label='Wishlist']").forEach(btn => {
+        btn.addEventListener("click", () => {
+            wishlist++;
+            wishCount.textContent = wishlist;
+            notify("Added to wishlist");
+        });
+    });
 
-    showImage(0);
-    restartTimer();
-});
+    const search = document.getElementById("globalSearch");
+    const searchBtn = document.getElementById("searchBtn");
+    function doSearch() {
+        const q = search.value.trim().toLowerCase();
+        if (!q) {
+            document.querySelector("#gift-cards").scrollIntoView({behavior:"smooth"});
+            return;
+        }
+        const matches = [...document.querySelectorAll(".gift-product, .affiliate-products article, .promo")];
+        const match = matches.find(el => el.textContent.toLowerCase().includes(q));
+        if (match) {
+            match.scrollIntoView({behavior:"smooth", block:"center"});
+            match.animate([{transform:"scale(1)"},{transform:"scale(1.03)"},{transform:"scale(1)"}], {duration:500});
+        } else {
+            notify("No matching item found");
+        }
+    }
+    searchBtn.addEventListener("click", doSearch);
+    search.addEventListener("keydown", e => { if(e.key === "Enter") doSearch(); });
+
+    // Hero dot/arrow demo interaction.
+    const dots = [...document.querySelectorAll(".hero-dots i")];
+    let heroIndex = 0;
+    function setHero(i) {
+        heroIndex = (i + dots.length) % dots.length;
+        dots.forEach((d, n) => d.classList.toggle("active", n === heroIndex));
+    }
+    document.querySelector(".hero-arrow.left").addEventListener("click", () => setHero(heroIndex - 1));
+    document.querySelector(".hero-arrow.right").addEventListener("click", () => setHero(heroIndex + 1));
+    dots.forEach((d, i) => d.addEventListener("click", () => setHero(i)));
+    setInterval(() => setHero(heroIndex + 1), 5000);
+})();

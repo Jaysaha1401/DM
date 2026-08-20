@@ -3,125 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DealMantra | Best Deals & Offers</title>
+    <meta name="description" content="OmniHubb — gift cards, affiliate deals, local stores and smart savings.">
+    <title>OmniHubb | Gift Cards, Deals & Smart Savings</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="navbar">
-    <div class="logo">
-        <h2>DealMantra</h2>
+<div class="utility-bar">
+    <div class="utility-left">
+        <span>▣ &nbsp; Download App</span>
+        <span>♡ &nbsp; 100% Secure Payments</span>
+        <span>▣ &nbsp; Instant Delivery</span>
     </div>
-
-    <div class="search">
-        <input class="search-box" type="text" placeholder="Search Deals" aria-label="Search deals">
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="#categories">Categories</a>
-        <a href="#featured-deals">Offers</a>
-        <a href="#footer">Contact</a>
-    </div>
-
-    <div class="nav-actions">
-        <button type="button">Login</button>
+    <div class="utility-right">
+        <a href="help-center.html">ⓘ &nbsp; Help Center</a>
+        <a href="track-order.html">▣ &nbsp; Track Order</a>
+        <a href="seller.html">♙ &nbsp; Become a Seller</a>
+        <span>🇮🇳 &nbsp; English⌄</span>
     </div>
 </div>
 
-<section class="hero">
-    <div class="overlay">
-        <h1>Welcome to DealMantra</h1>
-        <p>Deals That Matter!</p>
-        <p class="hero-subtitle">Discover the best deals, discounts, and offers every day.</p>
-        <a class="hero-button" href="#featured-deals">Explore Deals</a>
+<header class="site-header">
+    <a class="brand" href="index.html" aria-label="OmniHubb Home">
+        <img class="brand-logo-img" src="assets/omnihubb-logo.svg" alt="OmniHubb">
+    </a>
+
+    <div class="search-wrap">
+        <button class="category-select">All Categories <span>⌄</span></button>
+        <input id="globalSearch" class="search-box" type="search" placeholder="Search for gift cards, brands or categories..." aria-label="Search">
+        <button id="searchBtn" class="search-btn">Search</button>
+    </div>
+
+    <div class="header-actions">
+        <a class="icon-action" href="wishlist.html" aria-label="Wishlist">♡ <span>Wishlist</span><b id="wishCount">0</b></a>
+        <a class="icon-action" href="cart.html" aria-label="Cart">🛒 <span>Cart</span><b id="cartCount">0</b></a>
+        <a href="login.html" class="login-btn">♙ &nbsp; Login / Sign Up</a>
+    </div>
+</header>
+
+<nav class="main-nav">
+    <a class="all-categories" href="#categories">☰ &nbsp; All Categories</a>
+    <a href="#gift-cards">Gift Cards</a>
+    <a href="#affiliate-deals">Affiliate Deals</a>
+    <a href="#top-deals">Top Deals</a>
+    <a href="#new-arrivals">New Arrivals</a>
+    <a href="#brands">Brands</a>
+    <a href="#local-store">Local Store <em class="new-pill">New</em></a>
+    <a href="#offers">Offers Zone <em class="hot-pill">Hot</em></a>
+</nav>
+
+<main>
+
+<section class="hero-banner">
+    <button class="hero-arrow left" aria-label="Previous">‹</button>
+    <div class="hero-copy">
+        <p class="eyebrow">One Stop Destination for</p>
+        <h1>Gift Cards, <span>Deals &</span><br>Smart Savings!</h1>
+        <p class="hero-points">Shop from 500+ brands across categories.<br>Best prices • Instant delivery • Trusted by thousands</p>
+        <a href="#top-deals" class="primary-white-btn">Shop Now <span>→</span></a>
+    </div>
+    <div class="gift-wall" aria-label="Popular brands">
+        <div class="gift-card"><img src="assets/giftcards/amazon.svg" alt="Amazon Gift Card"></div>
+        <div class="gift-card"><img src="assets/giftcards/flipkart.svg" alt="Flipkart Gift Card"></div>
+        <div class="gift-card"><img src="assets/giftcards/zomato.svg" alt="Zomato Gift Card"></div>
+        <div class="gift-card"><img src="assets/giftcards/netflix.svg" alt="Netflix Gift Card"></div>
+        <div class="gift-card"><img src="assets/giftcards/spotify.svg" alt="Spotify Gift Card"></div>
+        <div class="gift-card"><img src="assets/giftcards/google-play.svg" alt="Google Play Gift Card"></div>
+    </div>
+    <button class="hero-arrow right" aria-label="Next">›</button>
+    <div class="hero-dots"><i class="active"></i><i></i><i></i><i></i></div>
+</section>
+
+<section class="quick-categories" id="categories">
+    <a class="quick-card" href="#gift-cards"><span>▣</span><strong>All Gift Cards</strong></a>
+    <a class="quick-card" href="#gaming"><span>🎮</span><strong>Gaming</strong></a>
+    <a class="quick-card" href="#ott"><span>▶</span><strong>OTT &<br>Entertainment</strong></a>
+    <a class="quick-card" href="#food"><span>🍴</span><strong>Food &<br>Dining</strong></a>
+    <a class="quick-card" href="#travel"><span>✈</span><strong>Travel</strong></a>
+    <a class="quick-card" href="#fashion"><span>🛍</span><strong>Fashion</strong></a>
+    <a class="quick-card" href="#electronics"><span>▣</span><strong>Electronics</strong></a>
+    <a class="quick-card" href="#beauty"><span>♢</span><strong>Beauty &<br>Health</strong></a>
+    <a class="quick-card" href="#education"><span>🎓</span><strong>Education</strong></a>
+    <a class="quick-card" href="#all"><span>▦</span><strong>View All</strong></a>
+</section>
+
+<section class="content-row" id="gift-cards">
+    <div class="gift-section">
+        <div class="section-heading">
+            <h2>🔥 Best Selling Gift Cards</h2>
+            <a href="#">View All →</a>
+        </div>
+        <div class="gift-grid">
+            <article class="gift-product">
+                <span class="off-label">5% OFF</span><div class="gift-visual"><img src="assets/giftcards/amazon.svg" alt="Amazon"></div>
+                <h3>Amazon Pay eGift Card</h3><p>₹50 - ₹10,000</p><del>₹10,000</del><strong>₹9,500</strong>
+                <button class="buy-btn" data-cart>Buy Now</button>
+            </article>
+            <article class="gift-product">
+                <span class="off-label">3% OFF</span><div class="gift-visual"><img src="assets/giftcards/flipkart.svg" alt="Flipkart"></div>
+                <h3>Flipkart Gift Card</h3><p>₹100 - ₹10,000</p><del>₹10,000</del><strong>₹9,700</strong>
+                <button class="buy-btn" data-cart>Buy Now</button>
+            </article>
+            <article class="gift-product">
+                <span class="off-label">4% OFF</span><div class="gift-visual"><img src="assets/giftcards/google-play.svg" alt="Google Play"></div>
+                <h3>Google Play Gift Code</h3><p>₹10 - ₹5,000</p><del>₹5,000</del><strong>₹4,800</strong>
+                <button class="buy-btn" data-cart>Buy Now</button>
+            </article>
+            <article class="gift-product">
+                <span class="off-label">5% OFF</span><div class="gift-visual"><img src="assets/giftcards/netflix.svg" alt="Netflix"></div>
+                <h3>Netflix Gift Card</h3><p>₹149 - ₹1,499</p><del>₹1,499</del><strong>₹1,424</strong>
+                <button class="buy-btn" data-cart>Buy Now</button>
+            </article>
+            <article class="gift-product">
+                <span class="off-label">5% OFF</span><div class="gift-visual"><img src="assets/giftcards/spotify.svg" alt="Spotify"></div>
+                <h3>Spotify Gift Card</h3><p>₹119 - ₹1,189</p><del>₹1,189</del><strong>₹1,130</strong>
+                <button class="buy-btn" data-cart>Buy Now</button>
+            </article>
+            <article class="gift-product">
+                <span class="off-label">4% OFF</span><div class="gift-visual"><img src="assets/giftcards/zomato.svg" alt="Zomato"></div>
+                <h3>Zomato Gift Card</h3><p>₹50 - ₹2,000</p><del>₹2,000</del><strong>₹1,920</strong>
+                <button class="buy-btn" data-cart>Buy Now</button>
+            </article>
+        </div>
+    </div>
+
+    <aside class="deal-day" id="offers">
+        <div class="deal-day-head"><h2>Deal of the Day</h2><div class="countdown"><b>12</b><small>HRS</small><b>45</b><small>MINS</small><b>30</b><small>SECS</small></div></div>
+        <div class="deal-day-body">
+            <div class="mynt">M<br><span>Myntra</span></div>
+            <div><h3>Myntra Gift Card</h3><strong>10% OFF</strong><p>₹100 - ₹10,000</p><button class="purple-btn" data-cart>Buy Now</button></div>
+        </div>
+    </aside>
+</section>
+
+<section class="trust-strip">
+    <div><span>ϟ</span><div><b>Instant Delivery</b><small>Get your code instantly</small></div></div>
+    <div><span>◉</span><div><b>Best Prices</b><small>Guaranteed savings</small></div></div>
+    <div><span>✓</span><div><b>Secure Payments</b><small>100% safe & secure</small></div></div>
+    <div><span>↻</span><div><b>Easy Refunds</b><small>Hassle-free refunds</small></div></div>
+    <div><span>♧</span><div><b>24/7 Support</b><small>We are here to help</small></div></div>
+</section>
+
+<section class="promo-grid" id="affiliate-deals">
+    <article class="promo affiliate"><div><h3>Top Trending Deal</h3><p>Earn More with Every Click!</p><a href="products/iphone.html">Explore Now</a></div><span>📱</span></article>
+    <article class="promo local" id="local-store"><div><h3>Local Stores</h3><p>Support Local, Save More!</p><a href="#local-store">Shop Local</a></div><span>🏪</span></article>
+    <article class="promo exclusive" id="top-deals"><div><h3>Exclusive Offers</h3><p>Grab the Best Deals Today!</p><a href="#gift-cards">View Offers</a></div><span>🏷️</span></article>
+    <article class="promo refer"><div><h3>Refer & Earn</h3><p>Invite Friends & Earn Rewards</p><a href="#">Refer Now</a></div><span>🤝</span></article>
+</section>
+
+<section class="product-preview" id="new-arrivals">
+    <div class="section-heading"><h2>🛍 Top Affiliate Products</h2><a href="products/iphone.html">View All →</a></div>
+    <div class="affiliate-products">
+        <article><img src="Image/iphone-1.jpg" alt="iPhone 16 Pro"><div><small>Affiliate Pick</small><h3>iPhone 16 Pro</h3><strong>₹74,999</strong><a href="products/iphone.html">View Deal</a></div></article>
+        <article><img src="Image/lenovo-laptop-1.jpg" alt="Lenovo Laptop"><div><small>Affiliate Pick</small><h3>Lenovo Laptop</h3><strong>₹49,999</strong><a href="products/lenovo.html">View Deal</a></div></article>
+        <article><img src="Image/puma-shoes-1.jpg" alt="Puma Shoes"><div><small>Affiliate Pick</small><h3>Puma Shoes</h3><strong>₹4,999</strong><a href="products/puma.html">View Deal</a></div></article>
+        <article><img src="Image/headphones-1.jpg" alt="Wireless Headphones"><div><small>Affiliate Pick</small><h3>Wireless Headphones</h3><strong>₹999</strong><a href="products/headphones.html">View Deal</a></div></article>
     </div>
 </section>
 
-<section class="categories" id="categories">
-    <h2>Browse Categories</h2>
-
-    <div class="category-grid">
-        <div class="category-card"><span class="category-icon">🍔</span><h3>Food</h3></div>
-        <div class="category-card"><span class="category-icon">👕</span><h3>Fashion</h3></div>
-        <div class="category-card"><span class="category-icon">💻</span><h3>Electronics</h3></div>
-        <div class="category-card"><span class="category-icon">✈️</span><h3>Travel</h3></div>
-        <div class="category-card"><span class="category-icon">🎮</span><h3>Gaming</h3></div>
-        <div class="category-card"><span class="category-icon">📚</span><h3>Books</h3></div>
-    </div>
-</section>
-
-<section class="featured-deals" id="featured-deals">
-    <h2>🔥 Featured Deals</h2>
-
-    <div class="deals-grid">
-
-        <div class="deal-card">
-            <div class="product-slider" data-product="iphone">
-                <img src="Image/iphone-1.jpg" alt="iPhone 16 Pro">
-                <img src="Image/iphone-2.jpg" alt="iPhone 16 Pro">
-                <img src="Image/iphone-3.jpg" alt="iPhone 16 Pro">
-                <img src="Image/iphone-4.jpg" alt="iPhone 16 Pro">
-                <button type="button" class="slider-prev" aria-label="Previous image">‹</button>
-                <button type="button" class="slider-next" aria-label="Next image">›</button>
-                <div class="slider-dots" aria-label="iPhone images">
-                    <button type="button" class="dot active" aria-label="Show image 1"></button>
-                    <button type="button" class="dot" aria-label="Show image 2"></button>
-                    <button type="button" class="dot" aria-label="Show image 3"></button>
-                    <button type="button" class="dot" aria-label="Show image 4"></button>
-                </div>
-            </div>
-            <h3>iPhone 16 Pro</h3>
-            <p class="price">₹74,999</p>
-            <span class="discount-badge">35% OFF</span>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">Latest Apple flagship with A18 chip.</p>
-            <a href="products/iphone.html" class="deal-button">View Deal</a>
-        </div>
-
-        <div class="deal-card">
-            <div class="product-slider" data-product="lenovo">
-                <img src="Image/lenovo-laptop-1.jpg" alt="Lenovo Laptop">
-            </div>
-            <h3>Lenovo Laptop</h3>
-            <p class="price">₹49,999</p>
-            <span class="discount-badge">50% OFF</span>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">Latest Lenovo laptop with 16GB RAM.</p>
-            <a href="products/lenovo.html" class="deal-button">View Deal</a>
-        </div>
-
-        <div class="deal-card">
-            <div class="product-slider" data-product="puma">
-                <img src="Image/puma-shoes-1.jpg" alt="Puma Shoes">
-            </div>
-            <h3>Puma Shoes</h3>
-            <p class="price">₹4,999</p>
-            <span class="discount-badge">51% OFF</span>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">Latest Puma shoes with enhanced comfort.</p>
-            <a href="products/puma.html" class="deal-button">View Deal</a>
-        </div>
-
-        <div class="deal-card">
-            <div class="product-slider" data-product="headphones">
-                <img src="Image/headphones-1.jpg" alt="Headphones">
-            </div>
-            <h3>Headphones</h3>
-            <p class="price">₹999</p>
-            <span class="discount-badge">70% OFF</span>
-            <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-            <p class="description">Premium headphones with immersive sound.</p>
-            <a href="products/headphones.html" class="deal-button">View Deal</a>
-        </div>
-
-    </div>
-</section>
+</main>
 
 <footer id="footer">
-    <p>© 2026 DealMantra. All rights reserved.</p>
+    <div class="footer-brand"><strong>OmniHubb</strong><p>Everything. One Place.</p></div>
+    <div><h4>Shop</h4><a href="#gift-cards">Gift Cards</a><a href="#affiliate-deals">Affiliate Deals</a><a href="#top-deals">Top Deals</a></div>
+    <div><h4>Discover</h4><a href="#local-store">Local Stores</a><a href="#new-arrivals">New Arrivals</a><a href="#offers">Offers Zone</a></div>
+    <div><h4>Support</h4><a href="help-center.html">Help Center</a><a href="track-order.html">Track Order</a><a href="help-center.html">Contact Us</a></div>
+    <div><h4>For Business</h4><a href="seller.html">Become a Seller</a><a href="seller.html">Advertise</a><a href="seller.html">Partner With Us</a></div>
+    <div class="footer-bottom">© 2026 OmniHubb. All rights reserved.</div>
 </footer>
 
+<div id="toast" class="toast">Added to cart</div>
 <script src="script.js"></script>
 </body>
 </html>
